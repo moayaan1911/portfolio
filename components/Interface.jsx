@@ -10,6 +10,9 @@ import {
   FaTwitter,
   FaWhatsapp,
   FaEnvelope,
+  FaEthereum,
+  FaBitcoin,
+  FaDonate,
 } from 'react-icons/fa';
 import { SiEthereum, SiHashnode, SiLinktree } from 'react-icons/si';
 const Section = (props) => {
@@ -65,7 +68,7 @@ const AboutSection = (props) => {
         </span>
       </h1>
       <motion.p
-        className='text-lg text-gray-700 mt-4'
+        className='text-lg text-gray-700 mt-4 font-semibold'
         initial={{
           opacity: 0,
           y: 25,
@@ -79,17 +82,24 @@ const AboutSection = (props) => {
           delay: 1.5,
         }}>
         Hello everyone, I am Mohammad Ayaan Siddiqui,
-        <br />a Full Stack Blockchain Developer,
-        <br /> Decentralization Maxi and Crypto Enthusiast
+        <br />a SELF-TAUGHT Full Stack Blockchain Developer,
+        <br />
+        <div className='flex items-center'>
+          Crypto Enthusiast and Decentralization MAXI
+          <FaEthereum />
+          <FaBitcoin />
+        </div>
       </motion.p>
       <motion.div
-        className='flex space-x-4 mt-4 md:mt-8'
+        className='flex space-x-4 mt-4'
         initial={{
-          opacity: 0,
+          opacity: 100,
+          zIndex: 999,
           y: 25,
         }}
         whileInView={{
-          opacity: 1,
+          opacity: 100,
+          zIndex: 999,
           y: 0,
         }}
         transition={{
@@ -144,6 +154,15 @@ const AboutSection = (props) => {
           rel='noopener noreferrer'>
           <SiLinktree size='2em' />
         </a>
+        <a
+          href='https://donate.unrwa.org/gaza/~my-donation'
+          target='_blank'
+          rel='noopener noreferrer'>
+          <FaDonate
+            size={'2em'}
+            color='green'
+          />
+        </a>
       </motion.div>
     </Section>
   );
@@ -153,6 +172,18 @@ const mergedSkills = [
   {
     title: 'Next.js',
     level: 90,
+  },
+  {
+    title: 'Solidity',
+    level: 70,
+  },
+  {
+    title: 'Hardhat/Foundry',
+    level: 80,
+  },
+  {
+    title: 'web3.js/ethers.js',
+    level: 80,
   },
   {
     title: 'MERN',
@@ -168,20 +199,9 @@ const mergedSkills = [
   },
   {
     title: 'Docker',
-    level: 70,
+    level: 50,
   },
-  {
-    title: 'Solidity',
-    level: 70,
-  },
-  {
-    title: 'Hardhat/Foundry',
-    level: 80,
-  },
-  {
-    title: 'web3.js/ethers.js',
-    level: 80,
-  },
+
   {
     title: 'Rust / Solana',
     level: 60,
@@ -300,7 +320,7 @@ const ProjectsSection = () => {
 
   return (
     <Section>
-      <div className='flex w-full h-full gap-8 items-center justify-center pt-[78rem]'>
+      <div className='flex w-full h-full gap-8 items-center justify-center pt-[82rem]'>
         <button
           className='hover:text-indigo-600 transition-colors'
           onClick={previousProject}>
