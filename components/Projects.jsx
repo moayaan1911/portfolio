@@ -31,7 +31,7 @@ export const projects = [
   {
     title: 'PolyCloud',
     url: 'https://polycloud.vercel.app/',
-    image: 'projects/polycloud.png',
+    image: 'projects/PolyCloud.png',
     description: 'Decentralized Storage web app built on Polygon',
   },
   {
