@@ -18,10 +18,10 @@ export function Avatar(props) {
 
   const { animations: typingAnimation } = useFBX('animations/Typing.fbx');
   const { animations: standingAnimation } = useFBX(
-    'animations/Standing Idle.fbx'
+    'animations/Standing_Idle.fbx'
   );
   const { animations: fallingAnimation } = useFBX(
-    'animations/Falling Idle.fbx'
+    'animations/Falling_Idle.fbx'
   );
 
   typingAnimation[0].name = 'Typing';
