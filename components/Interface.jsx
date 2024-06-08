@@ -80,7 +80,7 @@ const AboutSection = (props) => {
         }}>
         Hello everyone, I am Mohammad Ayaan Siddiqui,
         <br />a Full Stack Blockchain Developer,
-        <br /> Decentralized Maxi and Crypto Enthusiast
+        <br /> Decentralization Maxi and Crypto Enthusiast
       </motion.p>
       <motion.div
         className='flex space-x-4 mt-4 md:mt-8'
