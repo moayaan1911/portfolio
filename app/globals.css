@@ -2,7 +2,9 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  /* Always white background across themes */
+  --foreground: #111111;
+  /* Dark text for readability */
 }
 
 @theme inline {
@@ -12,15 +14,221 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Remove OS color-scheme influence: site stays white background */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Theme tokens for accent color system */
+:root {
+  --accent: #111111;
+  --accent-contrast: #ffffff;
+}
+
+.theme-ethereum {
+  --accent: #111111;
+  --accent-contrast: #ffffff;
+}
+
+.theme-bitcoin {
+  --accent: #f7931a;
+  --accent-contrast: #ffffff;
+}
+
+.theme-binance {
+  --accent: #f0b90b;
+  --accent-contrast: #111111;
+}
+
+.theme-solana {
+  --accent: #9933ff;
+  --accent-contrast: #ffffff;
+}
+
+.theme-chainlink {
+  --accent: #2a5ada;
+  --accent-contrast: #ffffff;
+}
+
+.theme-tron {
+  --accent: #d9012b;
+  --accent-contrast: #ffffff;
+}
+
+/* Utilities that leverage accent tokens */
+.accent-text {
+  color: var(--accent);
+}
+
+.accent-border {
+  border-color: var(--accent);
+}
+
+/* Glass button styles */
+.glass-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: var(--accent);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-btn:hover::before {
+  left: 100%;
+}
+
+/* Accent button with glass effect */
+.accent-btn {
+  background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent), black 10%));
+  color: var(--accent-contrast);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.accent-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.accent-btn:hover {
+  background: linear-gradient(135deg, color-mix(in oklab, var(--accent), white 10%), var(--accent));
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.accent-btn:hover::before {
+  left: 100%;
+}
+
+/* Outline button with glass effect */
+.btn-outline {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: color-mix(in oklab, var(--accent), white 20%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline:hover::before {
+  left: 100%;
+}
+
+/* Extra hover animation helpers */
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.hover-shine:hover {
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .6) 20%, rgba(255, 255, 255, 0) 40%) no-repeat;
+  background-size: 200% 100%;
+  animation: shine 900ms ease;
+}
+
+@keyframes pulseDot {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: .75;
+  }
+}
+
+.timeline-dot {
+  animation: pulseDot 1600ms ease-in-out infinite;
+}
+
+.btn-animated {
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.btn-animated:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+}
+
+/* Text truncation utilities */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Shimmer animation for glass effects */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(300%) skewX(-12deg);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out;
 }
