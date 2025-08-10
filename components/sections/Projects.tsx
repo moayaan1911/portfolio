@@ -5,7 +5,7 @@ import {
   FiExternalLink,
   FiGithub,
   FiStar,
-  FiCode,
+  FiMoreHorizontal,
   FiYoutube,
 } from "react-icons/fi";
 import { useMemo, useState } from "react";
@@ -14,16 +14,17 @@ import { details } from "@/lib/details";
 type Project = (typeof details)["projects"][number] & { featured?: boolean };
 
 export default function Projects() {
-  const [tab, setTab] = useState<"featured" | "all">("featured");
-  const { featured, all } = useMemo(() => {
+  const [tab, setTab] = useState<"featured" | "others">("featured");
+  const { featured, others } = useMemo(() => {
     const featured = details.projects.filter((p) => (p as Project).featured);
+    const others = details.projects.filter((p) => !(p as Project).featured);
     return {
       featured: featured as Project[],
-      all: details.projects as Project[],
+      others: others as Project[],
     };
   }, []);
 
-  const list = tab === "featured" ? featured : all;
+  const list = tab === "featured" ? featured : others;
 
   return (
     <section className="relative w-full max-w-6xl mx-auto px-4 py-12">
@@ -46,13 +47,13 @@ export default function Projects() {
           </button>
           <button
             className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 cursor-pointer ${
-              tab === "all"
+              tab === "others"
                 ? "bg-[var(--accent)] text-white shadow-lg"
                 : "text-gray-600 hover:text-[var(--accent)] hover:bg-white"
             }`}
-            onClick={() => setTab("all")}>
-            <FiCode className="w-4 h-4" />
-            All Projects ({all.length})
+            onClick={() => setTab("others")}>
+            <FiMoreHorizontal className="w-4 h-4" />
+            Others ({others.length})
           </button>
         </div>
       </div>

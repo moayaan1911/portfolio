@@ -130,16 +130,6 @@ export const details = {
       tags: ["AI", "NFT", "HuggingFace", "Next.js"],
     },
     {
-      title: "Decentralized Exchange Swap dApp",
-      description:
-        "Defi Swap built on ethereum mainnet using 0xProtocol and Next.js",
-      image: "/genesis.png",
-      link: "https://genesis-eth-swap.vercel.app/",
-      github: "https://github.com/moayaan1911/genesis-eth-swap",
-      demo: "https://youtu.be/8LMMBJbQgbs?si=FiXtCimmVCHHRVLq",
-      tags: ["DeFi", "0x Protocol", "Ethereum", "Next.js"],
-    },
-    {
       title: "GeoMint",
       description: "Mint your geolocation as an NFT.",
       image: "/geomint.png",
